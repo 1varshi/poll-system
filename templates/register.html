@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Poll App</title>
+    <link rel="stylesheet" href="/static/css/auth.css"> <!-- ✅ Same auth.css -->
+    <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+        const registerForm = document.getElementById('registerForm');
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            const res = await fetch('/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, role })
+            });
+
+            const data = await res.json();
+            const msg = document.getElementById('msg');
+
+            if (res.ok) {
+                msg.style.color = 'green';
+                msg.textContent = 'Registered successfully! Redirecting to login...';
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 2000);
+            } else {
+                msg.style.color = 'red';
+                msg.textContent = data.message;
+            }
+        });
+    });
+    </script>
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <h2>Create an Account</h2>
+        <form id="registerForm">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <select id="role" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc;">
+                <option value="" disabled selected>Select Role</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select><br>
+            <button type="submit">Register</button>
+        </form>
+        <p id="msg"></p>
+
+        <p class="auth-link-text">
+            Already have an account? <a href="/login" class="auth-link">Login</a>
+        </p>
+    </div>
+</body>
+</html>

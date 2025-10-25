@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard | Poll App</title>
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body class="student-body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Poll App</h2>
+        <button class="nav-btn active" onclick="showSection('viewPolls')"><i class="fas fa-poll"></i> View Polls</button>
+        <button class="nav-btn" onclick="showSection('answeredPolls')"><i class="fas fa-check-circle"></i> Answered Polls</button>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 id="welcomeStudent" style="margin-bottom: 30px;">Welcome, Student 🎓</h1>
+
+        <!-- View Polls Section -->
+        <section id="viewPollsSection">
+            <h2 class="dashboard-overview-title">Available Polls</h2>
+            <div id="studentPolls">Loading polls...</div>
+        </section>
+
+        <!-- Answered Polls Section -->
+        <section id="answeredPollsSection" class="hidden">
+            <h2 class="dashboard-overview-title">Answered Polls</h2>
+            <div id="answeredPolls">Loading answered polls...</div>
+        </section>
+    </div>
+
+    <script src="/static/js/student.js" defer></script>
+
+</body>
+</html>

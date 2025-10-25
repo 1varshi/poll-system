@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard | Poll App</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Poll App</h2>
+    <button class="nav-btn active" onclick="showSection('dashboard')"><i class="fas fa-home"></i> Dashboard</button>
+    <button class="nav-btn" onclick="showSection('createPoll')"><i class="fas fa-plus"></i> Create Poll</button>
+    <button class="nav-btn" onclick="showSection('managePolls')"><i class="fas fa-tasks"></i> Manage Polls</button>
+    <button class="logout-btn" onclick="showSection('logout')"><i class="fas fa-sign-out-alt"></i> Logout</button>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- <h1 id="welcomeMessage">Welcome, Teacher 🎓</h1> -->
+
+    <!-- Dashboard Section -->
+    <section id="dashboardSection">
+        <h2 class="dashboard-overview-title">Dashboard Overview</h2>
+        
+
+      <div class="dashboard-cards">
+        
+        <div class="card purple" onclick="showAllPolls()">
+            <h3 id="totalPolls">0</h3>
+            <p>Total Polls</p>
+          </div>
+          
+        
+        <div class="card pink">
+          <h3 id="myPolls">0</h3>
+          <p>My Polls</p>
+        </div>
+        <div class="card blue">
+          <h3 id="totalAnswers">0</h3>
+          <p>Total Answers</p>
+        </div>
+      </div>
+
+      <div class="recent-polls">
+        <h3>Recent Polls</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Poll Question</th>
+              <th>Total Answers</th>
+              <th>Created On</th>
+            </tr>
+          </thead>
+          <tbody id="recentPollsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Create Poll Section -->
+    <!-- <section id="createPollSection" class="card">
+        <h2>Create a New Poll</h2>
+        <form id="createPollForm" class="poll-form">
+          <input type="text" id="question" placeholder="Enter Poll Question" required><br><br>
+      
+          <div id="optionsContainer">
+            <input type="text" class="option" placeholder="Option 1" required><br><br>
+            <input type="text" class="option" placeholder="Option 2" required><br><br>
+          </div>
+      
+          <button type="button" onclick="addOption()" class="secondary-btn">+ Add Option</button><br><br>
+      
+          <button type="submit" class="primary-btn">Create Poll</button>
+        </form>
+        <p id="createMsg"></p>
+      </section> -->
+      <section id="createPollSection" class="poll-card">
+        <h2>Create a New Poll</h2>
+        <form id="createPollForm" class="poll-form">
+          <input type="text" id="question" placeholder="Poll Question" required>
+      
+          <div id="optionsContainer" class="options-container">
+            <input type="text" class="option" placeholder="Option 1" required>
+            <input type="text" class="option" placeholder="Option 2" required>
+          </div>
+      
+          <div class="button-group">
+            <button type="button" onclick="addOption()" class="add-option-btn"><i class="fas fa-plus"></i> Add Option</button>
+            <button type="submit" class="primary-btn">Create Poll</button>
+          </div>
+        </form>
+        <p id="createMsg" class="success-msg"></p>
+      </section>
+      
+
+    <!-- Manage Polls Section -->
+    <section id="managePollsSection" class="hidden">
+        <h2 class="dashboard-overview-title">Available Polls</h2>
+      <div id="managePollsContainer"></div>
+    </section>
+  </div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
