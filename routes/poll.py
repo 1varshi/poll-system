@@ -9,7 +9,7 @@ def create_poll():
     question = data['question']
     options = data['options']
     created_by = data['created_by']
-#abcd3e
+
     conn = get_db_connection()
     cursor = conn.cursor()
 
